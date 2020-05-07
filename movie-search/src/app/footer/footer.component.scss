@@ -1,0 +1,43 @@
+.footer__copyright {
+  @include container;
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+
+  & .footer__copyright_center {
+    @include align-center;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  & .footer__copyright_logo {
+  }
+
+  & .footer__copyright_logo {
+    @include logo-mark;
+    width: 50px;
+    background-image: url(../assets/github-logo.png);
+  }
+
+  & .footer__copyright_mark {
+    @include logo-mark;
+    width: 20px;
+    background-image: url(../assets/github-mark.png);
+  }
+
+  & .footer__copyright_left {
+    display: flex;
+    justify-items: center;
+
+    & span {
+      font-size: 12px;
+      display: inline-flex;
+      align-self: center;
+      &.footer__copyright-sybmol {
+        font-size: 15px;
+        margin-right: 5px;
+      }
+    }
+  }
+}
