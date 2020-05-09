@@ -1,12 +1,8 @@
-import { Component, IComponent } from "../../main";
+import { Component } from "../../main";
 
-class AppHeader extends Component {
-  constructor(config: IComponent) {
-    super(config)
-  }
-}
-
-export const appHeader = new AppHeader({
+@Component({
   selector: '#app-header',
   template: require('./header.component.html')
-});
+})
+export class AppHeader {
+}

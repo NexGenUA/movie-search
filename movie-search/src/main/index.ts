@@ -1,14 +1,16 @@
-import { bootstrap } from './core/bootstrap';
-import { Component, IComponent } from "./core/component";
+import { MainComponent, IComponent } from "./core/component";
 import { MainModule } from "./core/module";
-import { $ } from './tools/JLib';
+import { Component } from './core/decorators/component.decorator';
 import { yandexTranslate } from '../app/tools/yandex.translate';
+import { bootstrap } from './core/bootstrap';
+import { $ } from './tools/JLib';
 
 export  {
-  bootstrap,
-  Component,
+  MainComponent,
   MainModule,
   IComponent,
+  Component,
+  yandexTranslate,
+  bootstrap,
   $,
-  yandexTranslate
 }

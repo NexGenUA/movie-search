@@ -1,11 +1,12 @@
-import { $, Component, IComponent } from '../../main';
+import { $, Component } from '../../main';
 import Swiper from 'swiper';
 import * as mock from '../../mock/mock.data.json'
 
-class AppCards extends Component {
-  constructor(config: IComponent) {
-    super(config);
-  }
+@Component({
+  selector: '#app-cards',
+  template: require('./cards.component.html')
+})
+export class AppCards {
 
   onInit() {
     const swiper = new Swiper('.swiper-container', {
@@ -55,8 +56,3 @@ class AppCards extends Component {
     }, 5000);
   }
 }
-
-export const appCards = new AppCards({
-  selector: '#app-cards',
-  template: require('./cards.component.html')
-});

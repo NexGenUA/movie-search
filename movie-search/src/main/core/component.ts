@@ -6,13 +6,12 @@ export interface IComponent {
   render?: () => void;
 }
 
-export class Component implements IComponent{
+export class MainComponent implements IComponent{
 
   template: string;
   selector: string;
   title: string;
   el: HTMLElement;
-  events: () => object;
 
   constructor(config: IComponent) {
     this.template = config.template;
@@ -23,23 +22,15 @@ export class Component implements IComponent{
 
   render(): void {
     this.el = document.querySelector(this.selector);
-    if (!this.el) throw new Error(`Component with selector ${this.selector} not fount`);
+
+    if (!this.el) {
+      throw new Error(`Component with selector ${this.selector} not found`);
+    }
+
     this.el.innerHTML = this.template;
+
     if (this.title) {
       document.title = this.title;
-    }
-    this.initEvents();
-  }
-
-  initEvents(): void {
-    if (!this.events) return;
-
-    const events = this.events();
-
-    for (const event in events) {
-      const selectorEvent = event.split(' ');
-      const el = this.el.querySelector(selectorEvent[1]);
-      el.addEventListener(selectorEvent[0], this[events[event]])
     }
   }
 }

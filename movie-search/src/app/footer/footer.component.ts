@@ -1,12 +1,8 @@
-import { Component, IComponent } from '../../main';
+import { Component } from '../../main';
 
-class AppFooter extends Component {
-  constructor(config: IComponent) {
-    super(config)
-  }
-}
-
-export const appFooter = new AppFooter({
+@Component({
   selector: '#app-footer',
   template: require('./footer.component.html')
-});
+})
+export class AppFooter {
+}

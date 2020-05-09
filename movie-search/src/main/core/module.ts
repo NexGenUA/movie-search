@@ -19,9 +19,12 @@ export class MainModule {
     this.components.forEach(this.renderComponent);
   }
 
-  renderComponent(c: IComponent): void {
-    c.render();
-    if (!!c.onInit) c.onInit();
+  renderComponent(c): void {
+    const component = new c();
+
+    if (!!component.onInit) {
+      component.onInit();
+    }
   }
 
 }

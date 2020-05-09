@@ -1,9 +1,9 @@
 import { MainModule } from "../main/";
 import { appComponent } from "./app.component";
-import { appHeader } from "./header/header.component";
-import { appSearchForm } from "./search-form/search-form.component";
-import { appCards } from "./cards/cards.component";
-import { appFooter } from './footer/footer.component';
+import { AppHeader } from "./header/header.component";
+import { AppSearchForm } from "./search-form/search-form.component";
+import { AppCards } from "./cards/cards.component";
+import { AppFooter } from './footer/footer.component';
 
 class AppModule extends MainModule {
   constructor(config) {
@@ -13,10 +13,10 @@ class AppModule extends MainModule {
 
 export const appModule = new AppModule({
   components: [
-    appHeader,
-    appSearchForm,
-    appCards,
-    appFooter
+    AppHeader,
+    AppSearchForm,
+    AppCards,
+    AppFooter
   ],
   main: appComponent,
 });

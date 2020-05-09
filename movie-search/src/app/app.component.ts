@@ -1,6 +1,6 @@
-import { Component, IComponent } from '../main';
+import { MainComponent, IComponent } from '../main';
 
-class AppComponent extends Component {
+class AppComponent extends MainComponent {
   constructor(config: IComponent) {
     super(config)
   }
