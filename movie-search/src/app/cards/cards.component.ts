@@ -64,7 +64,6 @@ export class AppCards {
       }
     });
 
-    // this.swiper.virtual.update();
     this.swiper.lazy.load();
     this.swiper.on('reachEnd', () => {
       console.log('end', this.pagesCount);
