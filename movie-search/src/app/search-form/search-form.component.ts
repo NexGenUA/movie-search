@@ -1,4 +1,4 @@
-import { $, Component, yandexTranslate } from '../../main';
+import { $, cardsMaker, Component, dataEx, ombd, yandexTranslateService } from '../../main';
 
 @Component({
   selector: '#app-search-form',
@@ -8,7 +8,6 @@ import { $, Component, yandexTranslate } from '../../main';
   }
 })
 export class AppSearchForm {
-  ombKey = '14e5c753';
 
   async getMovies(e) {
     e.preventDefault();
@@ -19,8 +18,13 @@ export class AppSearchForm {
       return;
     }
 
-    $input.clear();
-    const translate = await yandexTranslate(value);
-    console.log(typeof translate, translate);
+    const translate = await yandexTranslateService(value);
+    const response = await ombd(translate);
+    if (!response) {
+      console.log('no results');
+      return;
+    }
+    const slides = response.slides.map(s => cardsMaker(s));
+    dataEx.send(slides, response.count, response.queryString);
   }
 }

@@ -1,21 +1,49 @@
-import { $, Component } from '../../main';
+import { $, cardsMaker, Component, dataEx, ombd } from '../../main';
 import Swiper from 'swiper';
-import * as mock from '../../mock/mock.data.json'
 
 @Component({
   selector: '#app-cards',
   template: require('./cards.component.html')
 })
 export class AppCards {
+  swiper: any;
+  currentPage = 1;
+  pagesCount: number;
+  searchPhrase: string;
+
+  dataChanged(data) {
+    this.swiper.removeAllSlides();
+    this.swiper.appendSlide(data[0]);
+    this.swiper.lazy.load();
+    document.querySelectorAll('#slider img').forEach((el: HTMLImageElement) => {
+      const setDefaultPosterImage = () => {
+        el.src = 'assets/default_poster.png';
+      };
+      el.addEventListener('error', setDefaultPosterImage);
+    });
+    this.currentPage = 1;
+    this.pagesCount = parseInt(data[1], 10);
+    this.searchPhrase = data[2];
+    console.log(this.pagesCount, this.searchPhrase);
+  }
 
   onInit() {
-    const swiper = new Swiper('.swiper-container', {
+    dataEx.subscribe(this);
+
+    this.swiper = new Swiper('.swiper-container', {
+      centeredSlides: false,
+      freeMode: true,
+      freeModeSticky: true,
       slidesPerView: 1,
+      spaceBetween: 20,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
+        type: 'bullets',
+        dynamicBullets: true,
+        dynamicMainBullets: 10,
       },
-      preloadImages: false,
+      preloadImages: true,
       lazy: {
         loadPrevNext: true,
       },
@@ -35,24 +63,29 @@ export class AppCards {
         }
       }
     });
-    $('#slider').html(`<div class="swiper-slide">
-      <div class="wrap-title-movie">
-        <span class="title-movie">Dolittle</span>
-      </div>
-      <img data-src="assets/dolittle.jpg" src="#" alt="Dolittle" class="swiper-lazy slider-img">
-      <div class="swiper-lazy-preloader"></div>
-      <span class="year">2020</span>
-      <span class="runtime">101 min</span>
-      <div class="wrap-rating">
-        <span class="material-icons star">star</span>
-        <span class="rating">5.6</span>
-      </div>
-    </div>`);
-    setTimeout(() => {
-      swiper[1].update();
-      swiper[1].slideReset();
-      swiper[1].lazy.load();
-      console.log('updated')
-    }, 5000);
+
+    // this.swiper.virtual.update();
+    this.swiper.lazy.load();
+    this.swiper.on('reachEnd', () => {
+      console.log('end', this.pagesCount);
+      if (this.currentPage < this.pagesCount) {
+        this.currentPage += 1;
+        const nextPageQueryString = `${this.searchPhrase}&page=${this.currentPage}`;
+        const getNextPage = ombd(nextPageQueryString);
+        getNextPage.then(res => {
+          const slides = res.slides.map(s => cardsMaker(s));
+          this.swiper.appendSlide(slides);
+        });
+        console.log('next page ', getNextPage)
+      }
+      console.log('test')
+    });
+    // $('#slider').html(``);
+    // setTimeout(() => {
+    //   swiper.update();
+    //   swiper.slideReset();
+    //   swiper.lazy.load();
+    //   console.log('updated')
+    // }, 5000);
   }
 }

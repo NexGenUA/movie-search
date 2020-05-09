@@ -1,5 +1,6 @@
 #app-cards {
   position: relative;
+  user-select: none;
 }
 
 .swiper-container.my-buttons {
@@ -10,22 +11,35 @@
 }
 
 .button-arrow {
-  top: 215px;
+  top: 250px;
+  outline: none;
+
+  &:hover {
+    filter: brightness(0.7);
+  }
+}
+
+.swiper-button-prev {
+  left: 20px;
+}
+
+.swiper-button-next {
+  right: 20px;
 }
 
 .swiper-container {
   width: 900px;
   padding-bottom: 50px;
 
-  @media screen and (max-width: 1019px){
+  @media screen and (max-width: 1019px) {
     max-width: 768px;
   }
 
-  @media screen and (max-width: 840px){
+  @media screen and (max-width: 840px) {
     max-width: 500px;
   }
 
-  @media screen and (max-width: 580px){
+  @media screen and (max-width: 580px) {
     max-width: 220px;
   }
 }
@@ -52,10 +66,12 @@
   align-items: center;
 }
 
-.slider-img {
+.slider-img, .slider_image {
   background-repeat: no-repeat;
   object-fit: cover;
+  background-size: contain;
   height: 310px;
+  width: 100%;
 }
 
 .star {
@@ -64,7 +80,10 @@
 }
 
 .wrap-title-movie {
-  height: 50px;
+  display: flex;
+  height: 100px;
+  align-items: flex-end;
+  padding-bottom: 20px;
 }
 
 .wrap-rating {

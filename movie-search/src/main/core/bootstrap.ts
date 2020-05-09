@@ -1,3 +1,3 @@
-export const bootstrap = module => {
+export const bootstrap = (module: any): void => {
   module.start();
 };

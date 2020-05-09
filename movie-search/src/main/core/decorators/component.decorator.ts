@@ -19,7 +19,7 @@ export function Component(config: IConfig) {
           for (const event in events) {
             const selectorEvent = event.split(' ');
             const el = node.querySelector(selectorEvent[1]);
-            el.addEventListener(selectorEvent[0], this[events[event]])
+            el.addEventListener(selectorEvent[0], this[events[event]].bind(this))
           }
         }
       }
