@@ -1,5 +1,6 @@
 @import 'var';
 @import 'mixin';
+@import '~normalize-scss/sass/normalize/import-now';
 @import 'global-styles';
 @import '../app/header/header.component';
 @import '../app/search-form/search-form.component';

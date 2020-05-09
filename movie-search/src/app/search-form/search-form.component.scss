@@ -1,6 +1,10 @@
+#app-search-form {
+  margin: 30px;
+}
+
 .search-form {
   @include align-center;
-  margin: 20px auto;
+  margin: 0 auto;
   cursor: pointer;
 
   & .search-form__input {

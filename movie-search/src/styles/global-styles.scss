@@ -3,4 +3,6 @@
   -webkit-font-smoothing: antialiased;
 }
 
-@import '~normalize-scss/sass/normalize/import-now';
+main {
+  min-height: calc(100vh - 180px);
+}

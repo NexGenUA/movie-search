@@ -1,17 +1,17 @@
+#app-footer {
+  width: 100%;
+  height: 50px;
+}
+
 .footer__copyright {
   @include container;
-  position: absolute;
-  bottom: 0;
-  height: 50px;
+  height: inherit;
 
   & .footer__copyright_center {
     @include align-center;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-  }
-
-  & .footer__copyright_logo {
   }
 
   & .footer__copyright_logo {
@@ -26,9 +26,14 @@
     background-image: url(../assets/github-mark.png);
   }
 
+  & .footer__copyright_right {
+    margin-right: 20px;
+  }
+
   & .footer__copyright_left {
     display: flex;
     justify-items: center;
+    margin-left: 20px;
 
     & span {
       font-size: 12px;

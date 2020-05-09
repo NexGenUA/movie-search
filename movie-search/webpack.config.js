@@ -27,6 +27,7 @@ module.exports = {
     }),
     new CopyPlugin([
       { from: './src/assets/fav', to: './' },
+      { from: './src/mock/images', to: './assets' },
     ]),
   ],
 

@@ -1,0 +1,86 @@
+[
+  {
+    "Title": "Terminator 2: Judgment Day",
+    "Year": "1991",
+    "imdbRating": "8.5",
+    "Runtime": "137 min",
+    "Poster": "../assets/terminator.jpg"
+  },
+  {
+    "Title": "Inception",
+    "Year": "2010",
+    "imdbRating": "8.8",
+    "Runtime": "148 min",
+    "Poster": "../assets/inception.jpg"
+  },
+  {
+    "Title": "Onward",
+    "Year": "2020",
+    "Runtime": "102 min",
+    "imdbRating":"7.5",
+    "Poster": "../assets/onward.jpg"
+  },
+  {
+    "Title": "I Can't Believe I'm Still Single",
+    "Year": "2008",
+    "imdbRating":"5.7",
+    "Runtime":"30 min",
+    "Poster": "../assets/i-cant-believe.jpg"
+  },
+  {
+    "Title": "Dolittle",
+    "Year": "2020",
+    "imdbRating":"5.6",
+    "Runtime":"101 min",
+    "Poster": "../assets/dolittle.jpg"
+  },
+  {
+    "Title": "Terminator: Dark Fate",
+    "Year": "2019",
+    "imdbRating":"6.3",
+    "Runtime":"128 min",
+    "Poster": "../assets/terminator-2019.jpg"
+  },
+  {
+    "Title": "No Time to Die",
+    "Year": "2020",
+    "Runtime":"163 min",
+    "imdbRating":"N/A",
+    "Poster": "../assets/no-time.jpg"
+  },
+  {
+    "Title": "Bad Boys for Life",
+    "Year": "2020",
+    "imdbRating":"6.8",
+    "Runtime":"124 min",
+    "Poster": "../assets/bad-boys.jpg"
+  },
+  {
+    "Title": "Tenet",
+    "Year": "2020",
+    "imdbRating":"N/A",
+    "Runtime":"N/A",
+    "Poster": "../assets/tenet.jpg"
+  },
+  {
+    "Title": "I Still Believe",
+    "Year": "2020",
+    "imdbRating":"6.5",
+    "Runtime":"116 min",
+    "Poster": "../assets/still-believe.jpg"
+  },
+  {
+    "Title": "Escape from Pretoria",
+    "Year": "2020",
+    "imdbRating":"6.7",
+    "Runtime":"106 min",
+    "Poster": "../assets/escape.jpg"
+  },
+  {
+    "Title": "A Quiet Place Part II",
+    "Year": "2020",
+    "imdbRating":"N/A",
+    "Runtime":"97 min",
+    "Poster": "../assets/place.jpg"
+  }
+]

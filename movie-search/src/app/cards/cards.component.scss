@@ -1,13 +1,43 @@
-.swiper-container {
-  width: 100%;
-  height: 500px;
+#app-cards {
+  position: relative;
 }
+
+.swiper-container.my-buttons {
+  overflow: visible;
+  max-width: 1020px;
+  width: 100%;
+  padding: 0;
+}
+
+.button-arrow {
+  top: 215px;
+}
+
+.swiper-container {
+  width: 900px;
+  padding-bottom: 50px;
+
+  @media screen and (max-width: 1019px){
+    max-width: 768px;
+  }
+
+  @media screen and (max-width: 840px){
+    max-width: 500px;
+  }
+
+  @media screen and (max-width: 580px){
+    max-width: 220px;
+  }
+}
+
 .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 
-  /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -20,4 +50,46 @@
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+}
+
+.slider-img {
+  background-repeat: no-repeat;
+  object-fit: cover;
+  height: 310px;
+}
+
+.star {
+  color: orange;
+  margin-right: 5px;
+}
+
+.wrap-title-movie {
+  height: 50px;
+}
+
+.wrap-rating {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  margin-top: 7px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.runtime, .year {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  color: $brand-color;
+}
+
+.title-movie {
+  font-weight: 900;
+  font-size: 15px;
+  color: $brand-color;
+}
+
+.rating {
+  color: $brand-color;
+  margin-top: 4px;
 }

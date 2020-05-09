@@ -62,8 +62,8 @@ class JLib {
     return this;
   }
 
-  parent() {
-    return $$(this.nativeElement.parentNode);
+  parent(): HTMLElement {
+    return $(this.nativeElement.parentNode);
   }
 
   attr(attrName: string, value: string = null): object | string {
@@ -73,8 +73,16 @@ class JLib {
     this.nativeElement.setAttribute(attrName, value);
     return this;
   }
+
+  val(): string {
+    return (<HTMLInputElement>this.nativeElement).value;
+  }
+
+  clear(): void {
+    (<HTMLInputElement>this.nativeElement).value = '';
+  }
 }
 
-export function $$(selector: Node | string): any {
+export function $(selector: Node | string): any {
   return new JLib(selector);
 }
