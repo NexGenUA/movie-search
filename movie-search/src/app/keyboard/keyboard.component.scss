@@ -1,0 +1,102 @@
+$back-color: darkgrey;
+$active: rgb(104, 204, 104);
+$hover: rgb(165, 195, 155);
+
+.app-keyboard {
+  width: 720px;
+  padding: 5px;
+  background-color: $back-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 auto;
+  position: absolute;
+  z-index: 10;
+  left: calc(50vw - 360px);
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+
+  & .button.en {
+    display: none;
+  }
+
+  & .button {
+    width: 45px;
+    height: 45px;
+    margin: 2px;
+    font-size: 16px;
+    box-shadow: 1px 1px 2px rgb(236, 236, 236);
+    cursor: pointer;
+    transition: all .2s ease;
+    font-family: 'Share Tech Mono', monospace;
+    border: none;
+    color: grey;
+    outline: none;
+
+    &:hover {
+      background-color: $hover;
+      box-shadow: 1px 1px 2px rgb(136, 136, 136);
+    }
+
+    &:active {
+      box-shadow: none;
+      transform: translate(1px, 1px);
+      background-color: $active;
+      border-radius: 2px;
+      color: wheat;
+    }
+  }
+
+  & .row {
+    display: flex;
+  }
+
+  & .backspace {
+    width: 128px;
+  }
+
+  & .delete {
+    width: 108px;
+  }
+
+  & .enter {
+    width: 128px;
+  }
+
+  & .space {
+    width: 157px;
+  }
+
+  & .active {
+    background-color: $active;
+    box-shadow: none;
+    transform: translate(1px, 1px);
+    border-radius: 2px;
+  }
+
+  .switch {
+    background-color: rgb(255, 240, 100);
+  }
+
+  & .keyq {
+    width: 65px;
+  }
+
+  & .keyz {
+    width: 65px;
+  }
+}
+
+.keyboard.en {
+
+  & .button.en {
+    display: block;
+  }
+
+  & .button.ru {
+    display: none;
+  }
+}

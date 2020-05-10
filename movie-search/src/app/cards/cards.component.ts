@@ -15,12 +15,14 @@ export class AppCards {
     this.swiper.removeAllSlides();
     this.swiper.appendSlide(data[0]);
     this.swiper.lazy.load();
+
     document.querySelectorAll('#slider img').forEach((el: HTMLImageElement) => {
       const setDefaultPosterImage = () => {
         el.src = 'assets/default_poster.png';
       };
       el.addEventListener('error', setDefaultPosterImage);
     });
+
     this.currentPage = 1;
     this.pagesCount = parseInt(data[1], 10);
     this.searchPhrase = data[2];
@@ -32,6 +34,7 @@ export class AppCards {
 
     this.swiper = new Swiper('.swiper-container', {
       centeredSlides: false,
+      updateOnImagesReady: true,
       freeMode: true,
       freeModeSticky: true,
       slidesPerView: 1,
@@ -41,11 +44,12 @@ export class AppCards {
         clickable: true,
         type: 'bullets',
         dynamicBullets: true,
-        dynamicMainBullets: 10,
+        dynamicMainBullets: 7,
       },
       preloadImages: true,
       lazy: {
         loadPrevNext: true,
+        loadPrevNextAmount: 5
       },
       navigation: {
         nextEl: '.swiper-button-next',
@@ -55,16 +59,16 @@ export class AppCards {
         1020: {
           slidesPerView: 4
         },
-        840: {
+        875: {
           slidesPerView: 3
         },
         580: {
           slidesPerView: 2
         }
-      }
+      },
+      centerInsufficientSlides: true
     });
 
-    this.swiper.lazy.load();
     this.swiper.on('reachEnd', () => {
       console.log('end', this.pagesCount);
       if (this.currentPage < this.pagesCount) {
@@ -75,16 +79,7 @@ export class AppCards {
           const slides = res.slides.map(s => cardsMaker(s));
           this.swiper.appendSlide(slides);
         });
-        console.log('next page ', getNextPage)
       }
-      console.log('test')
     });
-    // $('#slider').html(``);
-    // setTimeout(() => {
-    //   swiper.update();
-    //   swiper.slideReset();
-    //   swiper.lazy.load();
-    //   console.log('updated')
-    // }, 5000);
   }
 }

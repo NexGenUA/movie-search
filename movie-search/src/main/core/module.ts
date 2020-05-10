@@ -2,7 +2,7 @@ import { IComponent } from './component';
 
 export class MainModule {
 
-  components: [];
+  components: IComponent[];
   mainComponent: IComponent;
 
   constructor(config) {
