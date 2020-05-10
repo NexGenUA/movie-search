@@ -10,6 +10,14 @@ export const ombd = async (searchPhrase: string): Promise<any> => {
     const data = await fetch(url);
     const response = await data.json();
 
+    if (response.Error === 'Request limit reached!') {
+      return 401;
+    }
+
+    if (response.Error === 'Invalid API key!') {
+      return 403;
+    }
+
     if (response.Response === 'True') {
       const resultsCount = parseInt(response.totalResults, 10);
       const count = Math.ceil(resultsCount / 10);

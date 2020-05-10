@@ -35,6 +35,22 @@ export class AppSearchForm {
 
     $preloader.removeClass('on');
 
+    if (response === 401) {
+      $queryInfo.addClass('error');
+      $queryInfo.html(`
+        Invalid API key!
+      `);
+      return
+    }
+
+    if (response === 403) {
+      $queryInfo.addClass('error');
+      $queryInfo.html(`
+        Request limit reached!
+      `);
+      return
+    }
+
     if (!response) {
       $queryInfo.addClass('error');
 
