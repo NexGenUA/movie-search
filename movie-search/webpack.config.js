@@ -18,6 +18,10 @@ module.exports = {
     port: 4200,
   },
 
+  resolve: {
+    extensions: ['.js', '.ts'],
+  },
+
   plugins: [
     new Dotenv(),
     new CleanWebpackPlugin(),
@@ -56,12 +60,12 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
         loader: 'file-loader',
         options: { outputPath: 'assets/fonts' },
       },
       {
-        test: /\.(jpg|jpeg|png|gif)$/i,
+        test: /\.(jpg|jpeg|png|gif|svg)$/i,
         loader: 'file-loader',
         options: {
           name: '[hash:7].[name].[ext]',
@@ -94,7 +98,5 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.js', '.ts'],
-  },
+
 };

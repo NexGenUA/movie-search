@@ -1,4 +1,4 @@
-import { MainModule } from "../main/";
+import { MainModule } from "../main";
 import { appComponent } from "./app.component";
 import { AppHeader } from "./header/header.component";
 import { AppSearchForm } from "./search-form/search-form.component";

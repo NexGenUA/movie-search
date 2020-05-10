@@ -1,7 +1,18 @@
 <form class="search-form" id="search-form">
-  <span class="material-icons search-form__search">search</span>
-  <input class="search-form__input" id="form-input" type="text" maxlength="75" required placeholder="Search..." autofocus autocomplete="off">
-  <span class="material-icons search-form__keyboard">keyboard</span>
-  <span class="material-icons search-form__close">close</span>
-  <input type="submit" value="Search">
+  <div class="search-form__input-container">
+    <input class="search-form__input"
+           id="form-input" type="text"
+           maxlength="75"
+           required
+           placeholder="Search..."
+           autofocus autocomplete="off">
+    <span class="material-icons search-form__close" id="clear-input">close</span>
+    <span class="material-icons search-form__keyboard" id="keyboard-button">keyboard</span>
+    <span class="material-icons search-form__speak" id="speak">mic</span>
+  </div>
+  <button class="submit-button" type="submit" value="Search" id="submit-button">
+    <span class="material-icons search-form__search">search</span>
+  </button>
 </form>
+<span class="query-info" id="query-info">Write the name of the movie</span>
+<div class="preloader" id="preloader"></div>

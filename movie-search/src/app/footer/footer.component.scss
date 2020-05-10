@@ -28,6 +28,10 @@
 
   & .footer__copyright_right {
     margin-right: 20px;
+
+    @media screen and (max-width: 375px) {
+      margin-right: 10px;
+    }
   }
 
   & .footer__copyright_left {
@@ -35,14 +39,22 @@
     justify-items: center;
     margin-left: 20px;
 
+    @media screen and (max-width: 375px) {
+      margin-left: 10px;
+    }
+
     & span {
       font-size: 12px;
       display: inline-flex;
       align-self: center;
+
       &.footer__copyright-sybmol {
         font-size: 15px;
         margin-right: 5px;
       }
     }
+
   }
+
+
 }

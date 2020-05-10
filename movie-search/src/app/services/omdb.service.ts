@@ -38,6 +38,7 @@ export const ombd = async (searchPhrase: string): Promise<any> => {
             time: movie.Runtime,
             rating: movie.imdbRating,
             img: movie.Poster,
+            id: movie.imdbID,
           }
         }
       });

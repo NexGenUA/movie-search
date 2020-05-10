@@ -26,7 +26,6 @@ export class AppCards {
     this.currentPage = 1;
     this.pagesCount = parseInt(data[1], 10);
     this.searchPhrase = data[2];
-    console.log(this.pagesCount, this.searchPhrase);
   }
 
   onInit() {
@@ -39,6 +38,8 @@ export class AppCards {
       freeModeSticky: true,
       slidesPerView: 1,
       spaceBetween: 20,
+      preventClicks: false,
+      preventClicksPropagation: false,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -70,15 +71,27 @@ export class AppCards {
     });
 
     this.swiper.on('reachEnd', () => {
-      console.log('end', this.pagesCount);
       if (this.currentPage < this.pagesCount) {
+        $('#preloader').addClass('on');
+
         this.currentPage += 1;
+
         const nextPageQueryString = `${this.searchPhrase}&page=${this.currentPage}`;
         const getNextPage = ombd(nextPageQueryString);
+
         getNextPage.then(res => {
+          $('#preloader').removeClass('on');
           const slides = res.slides.map(s => cardsMaker(s));
           this.swiper.appendSlide(slides);
         });
+      }
+    });
+
+    this.swiper.on('click', (e) => {
+      const $target = $(e.target);
+      if ($target.hasClass('title-movie')) {
+        const id = $target.attr('data-id');
+        window.location.href = `https://www.imdb.com/title/${id}/videogallery/`
       }
     });
   }

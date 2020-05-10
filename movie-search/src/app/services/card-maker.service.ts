@@ -5,7 +5,7 @@ export const cardsMaker = (movie: any): string => {
   }
   return `<div class="swiper-slide">
     <div class="wrap-title-movie">
-      <span class="title-movie">${movie.title}</span>
+      <span data-id="${movie.id}" class="title-movie">${movie.title}</span>
     </div>
     <img data-src="${imageUrl}" src="#" alt="${movie.title}" class="swiper-lazy slider-img">
     <div class="swiper-lazy-preloader"></div>

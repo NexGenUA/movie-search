@@ -1,3 +1,18 @@
+interface I$ {
+  on: () => object
+  off: () => void
+  css: () => I$
+  addClass: (hide: string) => I$
+  removeClass: () => I$
+  hasClass: () => I$
+  append: () => I$
+  parent: () => I$
+  attr: () => I$
+  val: () => void
+  clear: () => void
+  switchClass: () => I$
+}
+
 class JLib {
   nativeElement: HTMLElement;
   eventName: string;
@@ -46,14 +61,17 @@ class JLib {
     return this;
   }
 
-  hasClass(className: string): object {
-    this.nativeElement.classList.contains(className);
-    return this;
+  hasClass(className: string): boolean {
+    return this.nativeElement.classList.contains(className);
   }
 
-  html(html: string): object {
-    this.nativeElement.innerHTML = html;
-    return this;
+  html(html?: string): string | object {
+    if (typeof html !== 'undefined') {
+      this.nativeElement.innerHTML = html;
+      return this;
+    }
+
+    return this.nativeElement.innerHTML;
   }
 
   append(node): object {
@@ -62,24 +80,69 @@ class JLib {
     return this;
   }
 
-  parent(): HTMLElement {
+  parent(): I$ {
     return $(this.nativeElement.parentNode);
   }
 
   attr(attrName: string, value: string = null): object | string {
-    if (!!value) {
+    if (!value) {
       return this.nativeElement.getAttribute(attrName)
     }
     this.nativeElement.setAttribute(attrName, value);
     return this;
   }
 
-  val(): string {
+  val(value?: string): string | object{
+    if (typeof value !== 'undefined') {
+      (<HTMLInputElement>this.nativeElement).value = value;
+      return this;
+    }
     return (<HTMLInputElement>this.nativeElement).value;
   }
 
   clear(): void {
     (<HTMLInputElement>this.nativeElement).value = '';
+  }
+
+  switchClass(className: string): object {
+    this.nativeElement.classList.toggle(className);
+    return this;
+  }
+
+  selStart(): number {
+    return (<HTMLInputElement>this.nativeElement).selectionStart;
+  }
+
+  selEnd(): number {
+    return (<HTMLInputElement>this.nativeElement).selectionEnd;
+  }
+
+  setRangeText(value, start, end, selectionMode: string): object {
+    (<HTMLInputElement>this.nativeElement).setRangeText(value, start, end, 'end');
+    return this;
+  }
+
+  focus(): object {
+    (<HTMLInputElement>this.nativeElement).focus();
+    return this;
+  }
+
+  hasName(nameValue: string): boolean {
+    return (<HTMLInputElement>this.nativeElement).name === nameValue;
+  }
+
+  submit() {
+    (<HTMLFormElement>this.nativeElement).submit();
+    return this;
+  }
+
+  trigger(eventName: string): object {
+    const event = new Event(eventName, {
+      bubbles: true,
+      cancelable: true
+    });
+    this.nativeElement.dispatchEvent(event);
+    return this;
   }
 }
 
