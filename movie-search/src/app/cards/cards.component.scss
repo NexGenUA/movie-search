@@ -119,13 +119,14 @@
 
   & .title-movie {
     cursor: pointer;
+    transition: color .2s ease;
 
     &:hover {
-      filter: brightness(1.2);
+      color: orange;
     }
 
     &:active {
-      filter: brightness(1);
+      color: orange;
       transform: translateY(1px);
     }
   }
@@ -157,4 +158,3 @@
   color: $brand-color;
   margin-top: 4px;
 }
-

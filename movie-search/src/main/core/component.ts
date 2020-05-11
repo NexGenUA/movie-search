@@ -6,11 +6,13 @@ export interface IComponent {
   render?: () => void;
 }
 
-export class MainComponent implements IComponent{
-
+export class MainComponent implements IComponent {
   template: string;
+
   selector: string;
+
   title: string;
+
   el: HTMLElement;
 
   constructor(config: IComponent) {

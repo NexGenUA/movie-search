@@ -1,4 +1,6 @@
-import { $, cardsMaker, Component, dataEx, ombd, yandexTranslateService } from '../../main';
+import {
+  $, cardsMaker, Component, dataEx, ombd, yandexTranslateService,
+} from '../../main';
 
 @Component({
   selector: '#app-search-form',
@@ -7,12 +9,14 @@ import { $, cardsMaker, Component, dataEx, ombd, yandexTranslateService } from '
     'submit #search-form': 'getMovies',
     'click #keyboard-button': 'showHideKeyboard',
     'click #clear-input': 'clearInput',
-    'click #speak': 'startSpeechRecognition'
-  }
+    'click #speak': 'startSpeechRecognition',
+  },
 })
 export class AppSearchForm {
   recognition: SpeechRecognition;
+
   recordTimer: any;
+
   RECORD_TIMER: number = 10000;
 
   async getMovies(e) {
@@ -40,7 +44,7 @@ export class AppSearchForm {
       $queryInfo.html(`
         Invalid API key!
       `);
-      return
+      return;
     }
 
     if (response === 403) {
@@ -48,7 +52,7 @@ export class AppSearchForm {
       $queryInfo.html(`
         Request limit reached!
       `);
-      return
+      return;
     }
 
     if (!response) {
@@ -119,7 +123,6 @@ export class AppSearchForm {
         clearTimeout(this.recordTimer);
         this.recordTimer = null;
       }
-
     });
 
     this.recognition.start();

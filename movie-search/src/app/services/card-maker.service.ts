@@ -16,5 +16,5 @@ export const cardsMaker = (movie: any): string => {
       <span class="rating">${movie.rating}</span>
     </div>
   </div>
-  `
+  `;
 };

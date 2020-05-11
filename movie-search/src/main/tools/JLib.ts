@@ -15,22 +15,26 @@ interface I$ {
 
 class JLib {
   nativeElement: HTMLElement;
+
   eventName: string;
+
   eventFunc: () => void;
+
   isElement: boolean;
 
   constructor(el) {
-    if (typeof el === 'string') {
-      el = document.querySelector(el);
+    let element = el;
+    if (typeof element === 'string') {
+      element = document.querySelector(element);
     }
-    this.nativeElement = el;
+    this.nativeElement = element;
     this.isElement = true;
   }
 
   on(eventName: string, func: () => void, context: object = null): object {
     this.eventName = eventName;
     this.eventFunc = func.bind(this);
-    if (!!context) {
+    if (context) {
       this.eventFunc = func.bind(context);
     }
     this.nativeElement.addEventListener(eventName, this.eventFunc);
@@ -42,13 +46,13 @@ class JLib {
   }
 
   css(styles: object): object {
-    if (!!styles) {
+    if (styles) {
       return this.nativeElement.style;
     }
     Object.keys(styles).forEach(key => {
       this.nativeElement.style[key] = styles[key];
     });
-    return this
+    return this;
   }
 
   addClass(className: string): object {
@@ -75,33 +79,37 @@ class JLib {
   }
 
   append(node): object {
-    if(this.isElement) node = node.nativeElement;
-    this.nativeElement.append(node);
+    let currentNode = node;
+    if (this.isElement) {
+      currentNode = currentNode.nativeElement;
+    }
+    this.nativeElement.append(currentNode);
     return this;
   }
 
   parent(): I$ {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     return $(this.nativeElement.parentNode);
   }
 
   attr(attrName: string, value: string = null): object | string {
     if (!value) {
-      return this.nativeElement.getAttribute(attrName)
+      return this.nativeElement.getAttribute(attrName);
     }
     this.nativeElement.setAttribute(attrName, value);
     return this;
   }
 
-  val(value?: string): string | object{
+  val(value?: string): string | object {
     if (typeof value !== 'undefined') {
-      (<HTMLInputElement>this.nativeElement).value = value;
+      (<HTMLInputElement> this.nativeElement).value = value;
       return this;
     }
-    return (<HTMLInputElement>this.nativeElement).value;
+    return (<HTMLInputElement> this.nativeElement).value;
   }
 
   clear(): void {
-    (<HTMLInputElement>this.nativeElement).value = '';
+    (<HTMLInputElement> this.nativeElement).value = '';
   }
 
   switchClass(className: string): object {
@@ -110,36 +118,36 @@ class JLib {
   }
 
   selStart(): number {
-    return (<HTMLInputElement>this.nativeElement).selectionStart;
+    return (<HTMLInputElement> this.nativeElement).selectionStart;
   }
 
   selEnd(): number {
-    return (<HTMLInputElement>this.nativeElement).selectionEnd;
+    return (<HTMLInputElement> this.nativeElement).selectionEnd;
   }
 
-  setRangeText(value, start, end, selectionMode: string): object {
-    (<HTMLInputElement>this.nativeElement).setRangeText(value, start, end, 'end');
+  setRangeText(value, start, end, selectionMode: any): object {
+    (<HTMLInputElement> this.nativeElement).setRangeText(value, start, end, selectionMode);
     return this;
   }
 
   focus(): object {
-    (<HTMLInputElement>this.nativeElement).focus();
+    (<HTMLInputElement> this.nativeElement).focus();
     return this;
   }
 
   hasName(nameValue: string): boolean {
-    return (<HTMLInputElement>this.nativeElement).name === nameValue;
+    return (<HTMLInputElement> this.nativeElement).name === nameValue;
   }
 
   submit() {
-    (<HTMLFormElement>this.nativeElement).submit();
+    (<HTMLFormElement> this.nativeElement).submit();
     return this;
   }
 
   trigger(eventName: string): object {
     const event = new Event(eventName, {
       bubbles: true,
-      cancelable: true
+      cancelable: true,
     });
     this.nativeElement.dispatchEvent(event);
     return this;

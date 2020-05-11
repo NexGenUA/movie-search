@@ -1,8 +1,8 @@
 import { IComponent } from './component';
 
 export class MainModule {
-
   components: IComponent[];
+
   mainComponent: IComponent;
 
   constructor(config) {
@@ -19,12 +19,11 @@ export class MainModule {
     this.components.forEach(this.renderComponent);
   }
 
-  renderComponent(c): void {
-    const component = new c();
+  renderComponent(C): void {
+    const component = new C();
 
-    if (!!component.onInit) {
+    if (component.onInit) {
       component.onInit();
     }
   }
-
 }

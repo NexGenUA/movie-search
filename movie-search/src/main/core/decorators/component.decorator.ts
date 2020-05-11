@@ -14,15 +14,15 @@ export function Component(config: IConfig) {
         node.innerHTML = config.template;
 
         if (config.events) {
-          const events = config.events;
+          const { events } = config;
 
           for (const event in events) {
             const selectorEvent = event.split(' ');
             const el = node.querySelector(selectorEvent[1]);
-            el.addEventListener(selectorEvent[0], this[events[event]].bind(this))
+            el.addEventListener(selectorEvent[0], this[events[event]].bind(this));
           }
         }
       }
-    }
-  }
+    };
+  };
 }

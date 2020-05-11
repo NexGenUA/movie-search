@@ -1,14 +1,19 @@
-import { $, cardsMaker, Component, dataEx, ombd } from '../../main';
 import Swiper from 'swiper';
+import {
+  $, cardsMaker, Component, dataEx, ombd,
+} from '../../main';
 
 @Component({
   selector: '#app-cards',
-  template: require('./cards.component.html')
+  template: require('./cards.component.html'),
 })
 export class AppCards {
   swiper: any;
+
   currentPage = 1;
+
   pagesCount: number;
+
   searchPhrase: string;
 
   dataChanged(data) {
@@ -50,7 +55,7 @@ export class AppCards {
       preloadImages: true,
       lazy: {
         loadPrevNext: true,
-        loadPrevNextAmount: 5
+        loadPrevNextAmount: 5,
       },
       navigation: {
         nextEl: '.swiper-button-next',
@@ -58,16 +63,16 @@ export class AppCards {
       },
       breakpoints: {
         1020: {
-          slidesPerView: 4
+          slidesPerView: 4,
         },
         875: {
-          slidesPerView: 3
+          slidesPerView: 3,
         },
         580: {
-          slidesPerView: 2
-        }
+          slidesPerView: 2,
+        },
       },
-      centerInsufficientSlides: true
+      centerInsufficientSlides: true,
     });
 
     this.swiper.on('reachEnd', () => {
@@ -91,7 +96,7 @@ export class AppCards {
       const $target = $(e.target);
       if ($target.hasClass('title-movie')) {
         const id = $target.attr('data-id');
-        window.location.href = `https://www.imdb.com/title/${id}/videogallery/`
+        window.location.href = `https://www.imdb.com/title/${id}/videogallery/`;
       }
     });
   }

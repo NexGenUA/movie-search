@@ -1,7 +1,7 @@
-const YANDEX_KEY = process.env.YANDEX_KEY;
-const OMDB_KEY = process.env.OMDB_KEY;
+const { YANDEX_KEY } = process.env;
+const { OMDB_KEY } = process.env;
 
 export {
   YANDEX_KEY,
-  OMDB_KEY
-}
+  OMDB_KEY,
+};

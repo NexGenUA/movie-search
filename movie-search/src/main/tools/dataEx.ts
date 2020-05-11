@@ -3,12 +3,12 @@ interface ISubscriber {
 }
 
 class DataEx {
-
   subscribes: object[] = [];
+
   data: any[] = [];
 
   subscribe(target: ISubscriber): void {
-    this.subscribes.push(target)
+    this.subscribes.push(target);
   }
 
   send(d: any[], count: string, searchPhrase: string): void {
@@ -19,7 +19,7 @@ class DataEx {
   info(): void {
     this.subscribes.forEach((subscriber: ISubscriber) => {
       subscriber.dataChanged(this.data);
-    })
+    });
   }
 }
 

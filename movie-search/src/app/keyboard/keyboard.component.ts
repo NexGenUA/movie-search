@@ -4,8 +4,8 @@ import { $, Component } from '../../main';
   selector: '#app-keyboard',
   template: require('./keyboard.component.html'),
   events: {
-    'click #keyboard': 'keyboardHandler'
-  }
+    'click #keyboard': 'keyboardHandler',
+  },
 })
 export class AppKeyboard {
   $formInput = $('#form-input');
@@ -22,7 +22,7 @@ export class AppKeyboard {
     const value = $target.val();
 
     if ($target.hasClass('switch')) {
-      $keyboard.switchClass('en')
+      $keyboard.switchClass('en');
     }
 
     if ($target.hasClass('symbol')) {

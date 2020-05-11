@@ -1,10 +1,11 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true
     },
     "extends": [
-        "airbnb-base"
+        "airbnb-typescript/base"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -12,21 +13,58 @@
     },
     "parserOptions": {
         "ecmaVersion": 2018,
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": "./tsconfig.json"
     },
     "rules": {
         "import/prefer-default-export": "off",
-        "no-param-reassign": [2, {"props": false}],
-        "prefer-destructuring": ["error", {"object": true, "array": false}],
-        "no-unused-expressions": [2, { "allowTernary": true }],
+        "no-param-reassign": [
+            2,
+            {
+                "props": false
+            }
+        ],
+        "prefer-destructuring": [
+            "error",
+            {
+                "object": true,
+                "array": false
+            }
+        ],
+        "no-unused-expressions": [
+            2,
+            {
+                "allowTernary": true
+            }
+        ],
         "no-plusplus": "off",
         "default-case": "off",
         "class-methods-use-this": "off",
         "no-multi-assign": "off",
         "global-require": "off",
         "guard-for-in": "off",
-        "no-restricted-syntax": ["off", "FunctionExpression", "WithStatement", "BinaryExpression[operator='in']"],
-        "arrow-parens": ["off", "always"],
+        "no-restricted-syntax": [
+            "off",
+            "FunctionExpression",
+            "WithStatement",
+            "BinaryExpression[operator='in']"
+        ],
+        "arrow-parens": [
+            "off",
+            "always"
+        ],
         "no-mixed-operators": "off"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        }
     }
 }

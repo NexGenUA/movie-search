@@ -1,7 +1,7 @@
 import { OMDB_KEY } from '../../common/config';
 
 
-export const ombd = async (searchPhrase: string): Promise<any> => {
+const ombd = async (searchPhrase: string): Promise<any> => {
   const queryString = searchPhrase.split(' ').join('+');
   const url = `https://www.omdbapi.com/?s=${queryString}&apikey=${OMDB_KEY}`;
   const result = [];
@@ -25,15 +25,12 @@ export const ombd = async (searchPhrase: string): Promise<any> => {
       response.Search.forEach((movie, i) => {
         result[i] = fetch(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${OMDB_KEY}`).then(
           res => {
-            if (res.status != 200) {
+            if (res.status !== 200) {
               return null;
-            } else {
-              return res.json();
             }
+            return res.json();
           },
-          () => {
-            return null;
-          }
+          () => null,
         );
       });
 
@@ -47,18 +44,23 @@ export const ombd = async (searchPhrase: string): Promise<any> => {
             rating: movie.imdbRating,
             img: movie.Poster,
             id: movie.imdbID,
-          }
+          };
         }
+        return null;
       });
 
       return {
-        slides: results.filter(data => !!data),
+        slides: results.filter(d => !!d),
         count,
         queryString,
       };
     }
   } catch (e) {
-    console.log(e);
     return false;
   }
+  return null;
 };
+
+export { ombd };
+
+module.exports = { ombd };
