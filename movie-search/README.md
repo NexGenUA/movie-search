@@ -6,11 +6,19 @@
     ```javascript
     $ git checkout movie-search
     ```
+    
+    + Перейти в папку с проектом:
+    
+    ```javascript
+    $ cd movie-search
+    ```
+    
     + Установить зависимости
+    
     ```jsvascript
     $ npm install
     ```
-    + Для быстрого запуска использовать команду:
+    + Для быстрого запуска приложения использовать команду:
 
      ```jsvascript
     $ npm run server
