@@ -4,26 +4,33 @@
 }
 
 .footer__copyright {
-  @include container;
   height: inherit;
 
+  @include container;
+
   & .footer__copyright_center {
-    @include align-center;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
+
+    @include align-center;
   }
 
   & .footer__copyright_logo {
-    @include logo-mark;
     width: 50px;
+
+    @include logo-mark;
+  }
+
+  & .footer__copyright_logo {
     background-image: url(../assets/github-logo.png);
   }
 
   & .footer__copyright_mark {
-    @include logo-mark;
     width: 20px;
     background-image: url(../assets/github-mark.png);
+
+    @include logo-mark;
   }
 
   & .footer__copyright_right {
@@ -53,8 +60,5 @@
         margin-right: 5px;
       }
     }
-
   }
-
-
 }

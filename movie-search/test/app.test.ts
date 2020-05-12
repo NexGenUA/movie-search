@@ -1,4 +1,4 @@
-import { $ } from '../src/main/tools/JLib';
+import { $ } from '../src/main';
 
 describe('Test JLib module', () => {
   let element;

@@ -7,11 +7,12 @@
 }
 
 .search-form {
-  @include align-center;
   margin: 0 auto;
   cursor: pointer;
   position: relative;
   display: flex;
+
+  @include align-center;
 
   & .search-form__input-container {
     display: flex;
@@ -117,6 +118,7 @@
 }
 
 @media screen and (max-width: 1019px) {
+
   .search-form__keyboard {
     display: none;
   }

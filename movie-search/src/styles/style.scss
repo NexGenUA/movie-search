@@ -1,9 +1,17 @@
-@import 'var';
-@import 'mixin';
-@import '~normalize-scss/sass/normalize/import-now';
-@import 'global-styles';
-@import '../app/header/header.component';
-@import '../app/search-form/search-form.component';
-@import '../app/cards/cards.component';
-@import '../app/footer/footer.component';
-@import '../app/keyboard/keyboard.component';
+@import "var";
+
+@import "mixin";
+
+@import "~normalize-scss/sass/normalize/import-now";
+
+@import "global-styles";
+
+@import "../app/header/header.component";
+
+@import "../app/search-form/search-form.component";
+
+@import "../app/cards/cards.component";
+
+@import "../app/footer/footer.component";
+
+@import "../app/keyboard/keyboard.component";
