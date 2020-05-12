@@ -26,6 +26,7 @@ export class AppSearchForm {
     const $queryInfo = $('#query-info');
     const $preloader = $('#preloader');
     $queryInfo.removeClass('error');
+    $('#app-keyboard').addClass('hide');
 
     $preloader.addClass('on');
 
