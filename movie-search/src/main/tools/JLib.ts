@@ -37,7 +37,7 @@ class JLib {
     if (context) {
       this.eventFunc = func.bind(context);
     }
-    this.nativeElement.addEventListener(eventName, this.eventFunc);
+    this.nativeElement.addEventListener(this.eventName, this.eventFunc);
     return this;
   }
 
