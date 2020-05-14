@@ -7,6 +7,6 @@ export const yandexTranslateService = async (word: string): Promise<string> => {
     const result = await data.json();
     return result.text[0].toLowerCase();
   } catch (e) {
-    return e;
+    window.location.reload();
   }
 };
