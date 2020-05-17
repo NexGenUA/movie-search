@@ -31,10 +31,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[hash].style.css',
     }),
-    new CopyPlugin([
-      { from: './src/assets/fav', to: './' },
-      { from: './src/mock/images', to: './assets' },
-    ]),
+    new CopyPlugin({
+      patterns: [
+        { from: './src/assets/fav', to: './' },
+        { from: './src/mock/images', to: './assets' },
+      ],
+    }),
   ],
 
   module: {
