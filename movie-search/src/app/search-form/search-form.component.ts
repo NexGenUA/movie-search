@@ -1,5 +1,5 @@
 import {
-  $, cardsMaker, Component, dataEx, ombd, yandexTranslateService,
+  $, cardsMaker, Component, dataEx, ombd, translateService,
 } from '../../main';
 
 @Component({
@@ -35,26 +35,10 @@ export class AppSearchForm {
       return;
     }
 
-    const translate = await yandexTranslateService(value);
-    const response = await ombd(translate);
+    const translate = await translateService(value);
+    const response = await ombd((translate as any).text);
 
     $preloader.removeClass('on');
-
-    if (response === 401) {
-      $queryInfo.addClass('error');
-      $queryInfo.html(`
-        Invalid API key!
-      `);
-      return;
-    }
-
-    if (response === 403) {
-      $queryInfo.addClass('error');
-      $queryInfo.html(`
-        Request limit reached!
-      `);
-      return;
-    }
 
     if (!response) {
       $queryInfo.addClass('error');
